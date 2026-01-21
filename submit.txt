@@ -95,3 +95,12 @@ diegao@dellaptop:~$ curl localhost:5000/review/1
 {}diegao@dellaptop:~$ curl localhost:5000/review/11
 {"message":"Book not found"}diegao@dellaptop:~$ 
 
+Task 6
+
+diegao@dellaptop:~$ curl -X POST http://localhost:5000/register   -H "Content-Type: application/json"   -d '{"username":"diegao","password":"12345"}'
+{"message":"User successfully registered. Now you can login"}diegao@dellaptop:~$ curl -X POST http://localhost:5000/register   -H "Content-Type: application/json"   -d '{"username":"diegao","password":"12345"}'
+{"message":"User already exists!"}diegao@dellaptop:~$ curl -X POST http://locadiegao@dellaptop:~$ curl -X POST http://localhost:5000/register \
+  -H "Content-Type: application/json" \
+  -d '{}'
+{"message":"User and password are required."}diegao@dellaptop:~$ 
+
