@@ -88,3 +88,10 @@ diegao@dellaptop:~$ curl localhost:5000/title/Things%20Fall%20Apart
     }
 ]diegao@dellaptop:~$ curl localhost:5000/title/RandomTitle
 {"message":"No books found by this title"}diegao@dellaptop:~$ 
+
+Task 5 
+
+diegao@dellaptop:~$ curl localhost:5000/review/1
+{}diegao@dellaptop:~$ curl localhost:5000/review/11
+{"message":"Book not found"}diegao@dellaptop:~$ 
+
