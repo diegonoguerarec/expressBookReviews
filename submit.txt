@@ -112,3 +112,9 @@ diegao@dellaptop:~$ curl -X POST http://localhost:5000/customer/login \
   -d '{"username":"diego","password":"12345"}'
 User successfully logged indiegao@dellaptop:~$ 
 
+Task 8
+
+diegao@dellaptop:~$ curl -X PUT "http://localhost:5000/customer/auth/review/1?review=Excellent+book!" -b cookies.txt
+{"message":"Review successfully added/updated","reviews":{"diego":"Excellent book!"}}diegao@dellaptop:~$ 
+
+
