@@ -64,3 +64,16 @@ diegao@dellaptop:~$ curl localhost:5000/isbn/5
     "reviews": {}
 }diegao@dellaptop:~$ curl localhost:5000/isbn/11
 {"message":"Book not found"}diegao@dellaptop:~$ 
+
+Task 3
+
+diegao@dellaptop:~$ curl localhost:5000/author/Chinua%20Achebe
+[
+    {
+        "author": "Chinua Achebe",
+        "title": "Things Fall Apart",
+        "reviews": {}
+    }
+]diegao@dellaptop:~$ curl localhost:5000/author/RandomAuthor
+{"message":"No books found by this author"}diegao@dellaptop:~$ 
+
