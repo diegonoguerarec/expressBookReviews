@@ -117,4 +117,24 @@ Task 8
 diegao@dellaptop:~$ curl -X PUT "http://localhost:5000/customer/auth/review/1?review=Excellent+book!" -b cookies.txt
 {"message":"Review successfully added/updated","reviews":{"diego":"Excellent book!"}}diegao@dellaptop:~$ 
 
+Task 9
+
+diegao@dellaptop:~$ curl http://localhost:5000/isbn/1
+{
+    "author": "Chinua Achebe",
+    "title": "Things Fall Apart",
+    "reviews": {
+        "testuser": "Amazing book!"
+    }
+diegao@dellaptop:~$ curl -X DELETE http://localhost:5000/customer/auth/review/1 \\
+  -b cookies.txt
+{"message":"Review successfully deleted"}diegao@dellaptop:~$ 
+diegao@dellaptop:~$ 
+diegao@dellaptop:~$ curl http://localhost:5000/isbn/1
+{
+    "author": "Chinua Achebe",
+    "title": "Things Fall Apart",
+    "reviews": {}
+}diegao@dellaptop:~$ 
+
 
