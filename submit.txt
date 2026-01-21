@@ -104,3 +104,11 @@ diegao@dellaptop:~$ curl -X POST http://localhost:5000/register   -H "Content-Ty
   -d '{}'
 {"message":"User and password are required."}diegao@dellaptop:~$ 
 
+
+Task 7
+
+diegao@dellaptop:~$ curl -X POST http://localhost:5000/customer/login \
+  -H "Content-Type: application/json" \
+  -d '{"username":"diego","password":"12345"}'
+User successfully logged indiegao@dellaptop:~$ 
+
