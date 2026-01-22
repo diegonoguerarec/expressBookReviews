@@ -1,6 +1,6 @@
 Task 1
 
-diegao@dellaptop:~$ curl localhost:5000
+curl localhost:5000
 {
     "1": {
         "author": "Chinua Achebe",
@@ -51,90 +51,75 @@ diegao@dellaptop:~$ curl localhost:5000
         "author": "Samuel Beckett",
         "title": "Molloy, Malone Dies, The Unnamable, the trilogy",
         "reviews": {}
-    }
-diegao@dellaptop:~$ 
+}
 
 
 Task 2
 
-diegao@dellaptop:~$ curl localhost:5000/isbn/5
+curl localhost:5000/isbn/5
 {
     "author": "Unknown",
     "title": "The Book Of Job",
     "reviews": {}
-}diegao@dellaptop:~$ curl localhost:5000/isbn/11
-{"message":"Book not found"}diegao@dellaptop:~$ 
+}
+
 
 Task 3
 
-diegao@dellaptop:~$ curl localhost:5000/author/Chinua%20Achebe
+curl localhost:5000/author/Chinua%20Achebe
 [
     {
         "author": "Chinua Achebe",
         "title": "Things Fall Apart",
         "reviews": {}
     }
-]diegao@dellaptop:~$ curl localhost:5000/author/RandomAuthor
-{"message":"No books found by this author"}diegao@dellaptop:~$ 
+]
+
 
 Task 4
 
-diegao@dellaptop:~$ curl localhost:5000/title/Things%20Fall%20Apart
+curl localhost:5000/title/Things%20Fall%20Apart
 [
     {
         "author": "Chinua Achebe",
         "title": "Things Fall Apart",
         "reviews": {}
     }
-]diegao@dellaptop:~$ curl localhost:5000/title/RandomTitle
-{"message":"No books found by this title"}diegao@dellaptop:~$ 
+]
 
-Task 5 
 
-diegao@dellaptop:~$ curl localhost:5000/review/1
-{}diegao@dellaptop:~$ curl localhost:5000/review/11
-{"message":"Book not found"}diegao@dellaptop:~$ 
+Task 5 ** (ya cambie)
+
+curl localhost:5000/review/1
+{}
+
 
 Task 6
 
-diegao@dellaptop:~$ curl -X POST http://localhost:5000/register   -H "Content-Type: application/json"   -d '{"username":"diegao","password":"12345"}'
-{"message":"User successfully registered. Now you can login"}diegao@dellaptop:~$ curl -X POST http://localhost:5000/register   -H "Content-Type: application/json"   -d '{"username":"diegao","password":"12345"}'
-{"message":"User already exists!"}diegao@dellaptop:~$ curl -X POST http://locadiegao@dellaptop:~$ curl -X POST http://localhost:5000/register \
+curl -X POST http://localhost:5000/register   -H "Content-Type: application/json"   -d '{"username":"diegao","password":"12345"}'
+{"message":"User successfully registered. Now you can login"}
+
+
+Task 7 ** (Dice que la salida no cumple con el formato)
+
+curl -X POST http://localhost:5000/customer/login \
   -H "Content-Type: application/json" \
-  -d '{}'
-{"message":"User and password are required."}diegao@dellaptop:~$ 
-
-
-Task 7
-
-diegao@dellaptop:~$ curl -X POST http://localhost:5000/customer/login \
-  -H "Content-Type: application/json" \
-  -d '{"username":"diego","password":"12345"}'
-User successfully logged indiegao@dellaptop:~$ 
+  -d '{"username":"diegao","password":"12345"}'
+User successfully logged in. Username: diegao
 
 Task 8
 
-diegao@dellaptop:~$ curl -X PUT "http://localhost:5000/customer/auth/review/1?review=Excellent+book!" -b cookies.txt
-{"message":"Review successfully added/updated","reviews":{"diego":"Excellent book!"}}diegao@dellaptop:~$ 
+curl -X PUT "http://localhost:5000/customer/auth/review/1?review=Excellent+book!" -b cookies.txt
+{"message":"Review successfully added/updated","reviews":{"diego":"Excellent book!"}} 
 
-Task 9
+Task 9 **
 
-diegao@dellaptop:~$ curl http://localhost:5000/isbn/1
-{
-    "author": "Chinua Achebe",
-    "title": "Things Fall Apart",
-    "reviews": {
-        "testuser": "Amazing book!"
-    }
-diegao@dellaptop:~$ curl -X DELETE http://localhost:5000/customer/auth/review/1 \\
+curl -X DELETE http://localhost:5000/customer/auth/review/1 \
   -b cookies.txt
-{"message":"Review successfully deleted"}diegao@dellaptop:~$ 
-diegao@dellaptop:~$ 
-diegao@dellaptop:~$ curl http://localhost:5000/isbn/1
-{
-    "author": "Chinua Achebe",
-    "title": "Things Fall Apart",
-    "reviews": {}
-}diegao@dellaptop:~$ 
+{"message":"Review successfully deleted","review":"Excelente libro, muy recomendado"}
 
 
+Last command
+
+curl -s https://api.github.com/repos/diegonoguerarec/expressBookReviews | jq '.parent.full_name'
+"ibm-developer-skills-network/expressBookReviews"

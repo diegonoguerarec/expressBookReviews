@@ -5,6 +5,7 @@ let users = require("./auth_users.js").users;
 const public_users = express.Router();
 const axios = require('axios').default;
 
+// Promisified functions to handle book retrieval
 function getBooks() {
   return new Promise((resolve, reject) => {
     try {
@@ -15,6 +16,7 @@ function getBooks() {
   });
 }
 
+// Get book details based on ISBN
 function getBookByISBN(isbn) {
   return new Promise((resolve, reject) => {
     try {
@@ -30,6 +32,7 @@ function getBookByISBN(isbn) {
   });
 }
 
+// Get book details based on author
 function getBooksByAuthor(author) {
   return new Promise((resolve, reject) => {
     try {
@@ -50,6 +53,7 @@ function getBooksByAuthor(author) {
   });
 }
 
+// Get all books based on title
 function getBooksByTitle(title) {
   return new Promise((resolve, reject) => {
     try {
@@ -70,6 +74,7 @@ function getBooksByTitle(title) {
   });
 }
 
+// Register a new user
 public_users.post("/register", (req,res) => {
   let user = req.body.username;
   let pass = req.body.password;
@@ -119,6 +124,7 @@ public_users.get('/isbn/:isbn', async function (req, res) {
 // Get book details based on author
 public_users.get('/author/:author', async function (req, res) {
   try {
+    // Get author from request parameters
     const author = req.params.author;
     const booksByAuthor = await getBooksByAuthor(author);
     res.send(JSON.stringify(booksByAuthor, null, 4));
@@ -130,6 +136,7 @@ public_users.get('/author/:author', async function (req, res) {
 // Get all books based on title
 public_users.get('/title/:title', async  function (req, res) {
   try {
+    // Get title from request parameters
     const title = req.params.title;
     const booksByTitle = await getBooksByTitle(title);
     res.send(JSON.stringify(booksByTitle, null, 4));
@@ -140,9 +147,12 @@ public_users.get('/title/:title', async  function (req, res) {
 
 //  Get book review
 public_users.get('/review/:isbn',function (req, res) {
+
+  // Get ISBN from request parameters
   let isbn = req.params.isbn;
   let book = books[isbn];
 
+  // Return the book reviews
   if (book) {
     res.send(JSON.stringify(book["reviews"], null, 4));
   } else {
